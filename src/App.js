@@ -2,13 +2,18 @@ import { hot } from "react-hot-loader/root";
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { MyContext, Widget } from "./Widget";
 
 function App() {
   const [count, setCount] = useState(0);
+  console.log("providing", count);
   return (
     <div className="App">
       <header className="App-header" onClick={() => setCount(count + 1)}>
         {count}
+        <MyContext.Provider value={count}>
+          <Widget />
+        </MyContext.Provider>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
